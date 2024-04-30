@@ -39,7 +39,11 @@ export default function TopNavBar(props) {
   }
 
   return (
+<<<<<<< HEAD
         <div id='top-nav' className={'fixed top-0 w-full z-40 ' + className}>
+=======
+        <div id='top-nav' className={'fixed top-0 w-full z-20 ' + className}>
+>>>>>>> parent of 6c030684 (gitbook主题变量名调整)
 
             {/* 移动端折叠菜单 */}
             <Collapse type='vertical' collapseRef={collapseRef} isOpen={isOpen} className='md:hidden'>
@@ -55,7 +59,11 @@ export default function TopNavBar(props) {
                 <LogoBar {...props} />
 
                 {/* 折叠按钮、仅移动端显示 */}
+<<<<<<< HEAD
                 <div className='mr-1 flex md:hidden justify-end items-center space-x-4 font-serif dark:text-gray-200'>
+=======
+                <div className='mr-1 flex md:hidden justify-end items-center space-x-4  dark:text-gray-200'>
+>>>>>>> parent of 6c030684 (gitbook主题变量名调整)
                     <DarkModeButton className='flex text-md items-center h-full' />
                     <div onClick={toggleMenuOpen} className='cursor-pointer text-lg hover:scale-110 duration-150'>
                         {isOpen ? <i className='fas fa-times' /> : <i className="fa-solid fa-ellipsis-vertical"/>}
