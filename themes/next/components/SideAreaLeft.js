@@ -30,10 +30,10 @@ const SideAreaLeft = props => {
             {/* 菜单 */}
             <section className='shadow hidden lg:block mb-5 pb-4 bg-white dark:bg-hexo-black-gray hover:shadow-xl duration-200'>
                 <Logo className='h-32' {...props} />
-                <div className='pt-2 px-2 '>
+                <div className='pt-2 px-2 font-sans'>
                     <MenuList allowCollapse={true} {...props} />
                 </div>
-                {siteConfig('NEXT_MENU_SEARCH', null, CONFIG) && <div className='px-2 pt-2 '>
+                {siteConfig('NEXT_MENU_SEARCH', null, CONFIG) && <div className='px-2 pt-2 font-sans'>
                     <SearchInput {...props} />
                 </div>}
 

@@ -7,13 +7,10 @@ import CategoryItem from './CategoryItem'
 import TagItemMini from './TagItemMini'
 import TwikooCommentCount from '@/components/TwikooCommentCount'
 import LazyImage from '@/components/LazyImage'
-import { checkContainHttp, sliceUrlFromHttp } from '@/lib/utils'
-import NotionIcon from '@/components/NotionIcon'
 
 const BlogPostCard = ({ post, showSummary }) => {
   const showPreview = siteConfig('MEDIUM_POST_LIST_PREVIEW', null, CONFIG) && post.blockMap
   const { locale } = useGlobal()
-  const url = checkContainHttp(post.slug) ? sliceUrlFromHttp(post.slug) : `${siteConfig('SUB_PATH', '')}/${post.slug}`
   return (
         <div
             key={post.id}
@@ -24,19 +21,19 @@ const BlogPostCard = ({ post, showSummary }) => {
             className="mb-6 max-w-7xl border-b dark:border-gray-800 "
         >
 
-            <header className="lg:py-8 py-4 flex flex-col w-full">
+            <div className="lg:py-8 py-4 flex flex-col w-full">
                 <Link
-                    href={url}
+                    href={`${siteConfig('SUB_PATH', '')}/${post.slug}`}
                     passHref
                     className={
                         'cursor-pointer font-bold  hover:underline text-3xl leading-tight text-gray-700 dark:text-gray-300 hover:text-green-500 dark:hover:text-green-400'
                     }>
-                    <h2>
+                    <div>
                         {siteConfig('MEDIUM_POST_LIST_COVER', null, CONFIG) && <div className='w-full max-h-96 object-cover overflow-hidden mb-2'>
                             <LazyImage src={post.pageCoverThumbnail} style={post.pageCoverThumbnail ? {} : { height: '0px' }} className='w-full max-h-96 object-cover hover:scale-125 duration-150' />
                         </div>}
-                        {siteConfig('POST_TITLE_ICON') && <NotionIcon icon={post.pageIcon} />}{post.title}
-                    </h2>
+                        {post.title}
+                    </div>
 
                 </Link>
 
@@ -54,9 +51,9 @@ const BlogPostCard = ({ post, showSummary }) => {
                 <div className="flex"></div>
 
                 {(!showPreview || showSummary) && (
-                    <main className="my-4 text-gray-700 dark:text-gray-300 text-sm font-light leading-7">
+                    <p className="my-4 text-gray-700 dark:text-gray-300 text-sm font-light leading-7">
                         {post.summary}
-                    </main>
+                    </p>
                 )}
 
                 {showPreview && (
@@ -65,7 +62,7 @@ const BlogPostCard = ({ post, showSummary }) => {
                         <div className="pointer-events-none border-t pt-8 border-dashed">
                             <div className="w-full justify-start flex">
                                 <Link
-                                    href={url}
+                                    href={`${siteConfig('SUB_PATH', '')}/${post.slug}`}
                                     passHref
                                     className="hover:bg-opacity-100 hover:scale-105 duration-200 pointer-events-auto transform font-bold text-green-500 cursor-pointer">
 
@@ -77,7 +74,7 @@ const BlogPostCard = ({ post, showSummary }) => {
                         </div>
                     </div>
                 )}
-            </header>
+            </div>
         </div>
   )
 }
